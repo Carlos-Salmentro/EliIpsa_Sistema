@@ -1,6 +1,6 @@
 ﻿namespace Eli_Ipsa_Teste.Entities.Enums
 {
-    public enum NiveisCurso
+    public enum NiveisCurso : int
     {
         B1,
         B1_Repeticao,

@@ -1,10 +1,9 @@
 ﻿namespace Eli_Ipsa_Teste.Entities.Enums
 {
-    public enum PossiveisResultadosEntrevista
+    public enum PossiveisResultadosEntrevista : int
     {
         Apto,
         Inapto,
-        NaoCompareceu
-
+        Nao_Compareceu
     }
 }

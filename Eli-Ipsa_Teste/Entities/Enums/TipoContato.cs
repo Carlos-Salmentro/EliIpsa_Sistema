@@ -1,10 +1,12 @@
 ﻿namespace Eli_Ipsa_Teste.Entities.Enums
 {
-    public enum TipoContato
+    public enum TipoContato : int
     {
+        Celular_WhatsApp,
         Celular,
         Email,
-        TelefoneResidencial,
-        TelefoneComercial
+        Telefone_Residencial,
+        Telefone_Comercial,
+        Telefone_Contato
     }
 }

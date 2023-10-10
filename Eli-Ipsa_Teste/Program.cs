@@ -1,7 +1,15 @@
+using Eli_Ipsa_Teste.Repositorio;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+//Add MySql as a service
+var connectionString = builder.Configuration.GetConnectionString("ConexaoDeTeste");
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 
 var app = builder.Build();
 

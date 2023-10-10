@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Eli_Ipsa_Teste.Repositorio;
 using Eli_Ipsa_Teste.Servicos;
 
 namespace Eli_Ipsa_Teste.Entities
@@ -8,8 +7,8 @@ namespace Eli_Ipsa_Teste.Entities
     [Table("Preceptorias")]
     public class Preceptoria
     {
-        private readonly ServicoPreceptoria _servicoPreceptoria;
-        public Preceptoria(ServicoPreceptoria servicoPreceptoria)
+        private readonly PreceptoriaServico _servicoPreceptoria;
+        public Preceptoria(PreceptoriaServico servicoPreceptoria)
         {
             _servicoPreceptoria = servicoPreceptoria;
         }

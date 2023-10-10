@@ -4,39 +4,55 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Eli_Ipsa_Teste.Entities
 {
-    [Table("Entrevistas")]
+    [Table("AgendamentoEntrevistas")]
     public class Entrevista
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        [ForeignKey("CandidatoId")]
-        [Column("CandidatoId")]
+        [Column("NomeEntrevistado")]
         [Required]
-        public int CandidatoId { get; set; }
+        public string NomeEntrevistado { get; set; }
+        [Column("ContatoEntrevistado")]
+        [Required]
+        public string ContatoEntrevistado { get; set; }
+        [Column("TipoContato")]
+        [Required]
+        public TipoContato TipoContato { get; set; }
+        [Column("Indicacao")]
+        public string Indicacao { get; set; }
         [ForeignKey("AlunoId")]
         [Column("Entrevistador")]
-        [Required]
         public int Entrevistador { get; set; }
-        [ForeignKey("AlunoId")]
-        [Column("CoEntrevistador")]
-        public int CoEntrevistador { get; set; }
         [Column("DataDaEntrevista")]
+        [Required]
         public DateTime DataDaEntrevista { get; set; }
+
+        [Column("Resultado")]
+        public PossiveisResultadosEntrevista? Resultado { get; set; }
+        [Column("ReEntrevista")]
+        [Required]
+        public bool ReEntrevista { get; set; }
         [Column("Ativa")]
         [Required]
         public bool Ativa { get; set; }
-        [Column("Resultado")]
-        public PossiveisResultadosEntrevista? Resultado { get; set; }
+        [Column("AlunoAntigo")]
+        [ForeignKey("Aluno")]
+        public int? AlunoId { get; set; }
 
-        public Entrevista(int candidatoId, int entrevistador, int coEntrevistador, DateTime dataDaEntrevista, bool ativa, PossiveisResultadosEntrevista? resultado)
+
+        public Entrevista(string nomeEntrevistado, string contatoEntrevistado, TipoContato tipoContato, string indicacao, int entrevistador, 
+            DateTime dataDaEntrevista, bool ativa, PossiveisResultadosEntrevista? resultado, bool reentrevista)
         {
-            CandidatoId = candidatoId;
+            NomeEntrevistado = nomeEntrevistado;
+            ContatoEntrevistado = contatoEntrevistado;
+            TipoContato = tipoContato;
+            Indicacao = indicacao;
             Entrevistador = entrevistador;
-            CoEntrevistador = coEntrevistador;
             DataDaEntrevista = dataDaEntrevista;
             Ativa = ativa;
             Resultado = resultado;
+            ReEntrevista = reentrevista;
         }
     }
 }

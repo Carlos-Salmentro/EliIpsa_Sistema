@@ -7,6 +7,7 @@ namespace Eli_Ipsa_Teste.Entities
     public class Aluno
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public int ID { get; set; }
         [Column("Nome")]
@@ -18,6 +19,9 @@ namespace Eli_Ipsa_Teste.Entities
         [Column("Ativo")]
         [Required]
         public bool Ativo { get; set; }
+        [Column("Apto")]
+        [Required]
+        public bool Apto { get; set; }
         [Column("Preceptor")]
         [Required]
         public bool Preceptor { get; set; }
@@ -30,12 +34,12 @@ namespace Eli_Ipsa_Teste.Entities
         [Column("Observacoes")]
         public string Observacoes { get; set; }
 
-        public Aluno(int id, string nome, string endereco, bool ativo, bool preceptor, bool entrevistador, string? observacoes)
+        public Aluno(string nome, string endereco, bool ativo, bool apto, bool preceptor, bool entrevistador, string? observacoes)
         {
-            ID = id;
             Nome = nome;
             Endereço = endereco;
             Ativo = ativo;
+            Apto = apto;
             Preceptor = preceptor;
             Entrevistador = entrevistador;
             Observacoes = observacoes;

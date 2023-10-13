@@ -1,6 +1,7 @@
 ﻿using Eli_Ipsa_Teste.BancoDeDados;
 using Eli_Ipsa_Teste.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace Eli_Ipsa_Teste.Servicos
 {
@@ -12,8 +13,13 @@ namespace Eli_Ipsa_Teste.Servicos
             _context = context;
         }
         
-        public Aluno GetAlunoById (int alunoId)
+        public Aluno GetAlunoPorId (int alunoId)
         {
+            if(alunoId == 0)
+            {
+                throw new ArgumentNullException("O ID do aluno deve ser diferente de 0");
+            }
+
             Aluno aluno = _context.Alunos.FirstOrDefault(x => x.ID == alunoId);
             
             if(aluno != null)
@@ -24,8 +30,12 @@ namespace Eli_Ipsa_Teste.Servicos
             throw new NullReferenceException("Nenhum aluno encontrado com o ID informado");
         }
 
-        public string GetNomeAlunoById(int alunoId)
+        public string GetNomeAlunoPorId(int? alunoId)
         {
+            if(alunoId == null)
+            {
+                throw new ArgumentNullException("ERRO: Id inforado é nulo.");
+            }
             string nomeAluno = _context.Alunos.Where(x => x.ID == alunoId).Select(x => x.Nome).ToString();
 
             return nomeAluno;

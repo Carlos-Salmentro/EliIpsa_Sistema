@@ -8,17 +8,20 @@ namespace Eli_Ipsa_Teste.Entities
     {
         [Key]
         [Column("ID")]
-        public string Nome { get; set; }
-        [Column("Responsavel")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+        [Column("Nome")]
         [Required]
-        public int Responsavel { get; set; }
+        public string Nome { get; set; }
+        [Column("ResponsavelId")]
+        public int ResponsavelId { get; set; }
         [Column("Observacoes")]
         public string Observacoes;
 
-        public Departamento (string nome, int responsavel, string observacoes)
+        public Departamento (string nome, int responsavelId, string observacoes)
         {
             Nome = nome;
-            Responsavel = responsavel;
+            ResponsavelId = responsavelId;
             Observacoes = observacoes;
         }
         

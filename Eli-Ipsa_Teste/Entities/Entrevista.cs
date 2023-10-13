@@ -27,7 +27,6 @@ namespace Eli_Ipsa_Teste.Entities
         [Column("DataDaEntrevista")]
         [Required]
         public DateTime DataDaEntrevista { get; set; }
-
         [Column("Resultado")]
         public PossiveisResultadosEntrevista? Resultado { get; set; }
         [Column("ReEntrevista")]
@@ -39,9 +38,11 @@ namespace Eli_Ipsa_Teste.Entities
         [Column("AlunoAntigo")]
         [ForeignKey("Aluno")]
         public int? AlunoId { get; set; }
+        [Column("Observacao")]
+        public string Observacao { get; set; }
 
 
-        public Entrevista(string nomeEntrevistado, string contatoEntrevistado, TipoContato tipoContato, string indicacao, int entrevistador, 
+        public Entrevista(string nomeEntrevistado, string contatoEntrevistado, TipoContato tipoContato, string indicacao, int entrevistador,
             DateTime dataDaEntrevista, bool ativa, PossiveisResultadosEntrevista? resultado, bool reentrevista)
         {
             NomeEntrevistado = nomeEntrevistado;

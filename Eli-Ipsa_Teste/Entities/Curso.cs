@@ -13,26 +13,27 @@ namespace Eli_Ipsa_Teste.Entities
         [Column("NivelCurso")]
         [ForeignKey("NiveisCurso")]
         [Required]
-        public NiveisCurso NivelCurso { get; private set; }
-        [Column("IdentificadorCurso")]
+        public NiveisCurso NivelCurso { get; set; }
+        [Column("Turma")]
+        public string Turma { get; set; }
+        [Column("Codigo")]
         [Required]
-        
-        public string IdentificadorCurso { get; private set; }
+        public string Codigo { get; set; }
         [Column("DataInicio")]
-        public DateTime? DataInicio { get; private set; }
+        public DateTime? DataInicio { get; set; }
         [Column("DataTermino")]
-        public DateTime? DataTermino { get; private set; }
+        public DateTime? DataTermino { get; set; }
         [Column("Ativo")]
         [Required]
-        public bool Ativo { get; private set; }
+        public bool Ativo { get; set; }
         [Column("Observacao")]
-        public string? Observacao { get; private set; }
+        public string? Observacao { get; set; }
 
-        public Curso(NiveisCurso nivelCurso, string identificadorCurso, DateTime? dataInicio, DateTime? dataTermino, bool ativo, string? observacao)
+        public Curso(NiveisCurso nivelCurso, string turma, DateTime? dataInicio, DateTime? dataTermino, bool ativo, string? observacao)
         {
-            ID = string.Concat(nivelCurso.ToString(), identificadorCurso);
+            ID = string.Concat(nivelCurso.ToString(), turma);
             NivelCurso = nivelCurso;
-            IdentificadorCurso = identificadorCurso;
+            Turma = turma;
             DataInicio = dataInicio;
             DataTermino = dataTermino;
             Ativo = ativo;

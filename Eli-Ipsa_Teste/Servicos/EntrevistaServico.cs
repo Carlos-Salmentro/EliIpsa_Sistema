@@ -8,10 +8,12 @@ namespace Eli_Ipsa_Teste.Servicos
     public class EntrevistaServico
     {
         protected readonly AppDbContext _context;
+        protected readonly AlunoServico _alunoServico;
 
-        public EntrevistaServico(AppDbContext context)
+        public EntrevistaServico(AppDbContext context, AlunoServico alunoServico)
         {
             _context = context;
+            _alunoServico = alunoServico;
         }
 
         public List<EntrevistaResponse> GetAllEntrevistas()
@@ -27,13 +29,15 @@ namespace Eli_Ipsa_Teste.Servicos
 
                 if (x.AlunoId == null)
                 {
-                    return EntrevistaResponse response = new EntrevistaResponse(x.ID, x.NomeEntrevistado, x.ContatoEntrevistado, x.TipoContato, x.Indicacao, nomeEntrevistador, CoEntrevistadores,
+                    EntrevistaResponse aux1 = new EntrevistaResponse(x.ID, x.NomeEntrevistado, x.ContatoEntrevistado, x.TipoContato, x.Indicacao, nomeEntrevistador, CoEntrevistadores,
                     x.DataDaEntrevista, x.Resultado, x.ReEntrevista, x.Ativa, null);
+                    EntrevistaResponse.Add(aux1);
                 }
 
-                string nomeAlunoAntigo = AlunoServico.GetNomeAlunoById(x.AlunoId);
-
-                EntrevistaResponse.Add(response);
+                string nomeAlunoAntigo = _alunoServico.GetNomeAlunoPorId(x.AlunoId);
+                EntrevistaResponse aux2 = new EntrevistaResponse(x.ID, x.NomeEntrevistado, x.ContatoEntrevistado, x.TipoContato, x.Indicacao, nomeEntrevistador, CoEntrevistadores,
+                    x.DataDaEntrevista, x.Resultado, x.ReEntrevista, x.Ativa, nomeAlunoAntigo);
+                EntrevistaResponse.Add(aux2);
             }
 
             return EntrevistaResponse;
@@ -60,7 +64,7 @@ namespace Eli_Ipsa_Teste.Servicos
             return nomeCoEntrevistadores;
         }
 
-        public EntrevistaResponse GetEntrevista(int entrevistaId)
+        public EntrevistaResponse GetEntrevistaPorId(int entrevistaId)
         {
             Entrevista entrevista = _context.Entrevistas.SingleOrDefault(a => a.ID == entrevistaId);
 
@@ -81,7 +85,6 @@ namespace Eli_Ipsa_Teste.Servicos
                 entrevista.Indicacao, entrevistador, Coentrevistadores, entrevista.DataDaEntrevista, entrevista.Resultado, entrevista.ReEntrevista, entrevista.Ativa, null);
 
             return response;
-
         }
 
     }

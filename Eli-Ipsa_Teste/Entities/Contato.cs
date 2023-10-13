@@ -16,7 +16,6 @@ namespace Eli_Ipsa_Teste.Entities
         public TipoContato TipoContato { get; private set; }
         [Column("Contato")]
         public string Contato_ { get; private set; }
-       
         [Column("Ativo")]
         [Required]
         public bool Ativo { get; private set; }

@@ -16,6 +16,9 @@ namespace Eli_Ipsa_Teste.Entities
         [Column("Endereço")]
         [Required]
         public string Endereço { get; set; }
+        [Column("DataNascimento")]
+        [Required]
+        public DateTime Nascimento { get; set; }
         [Column("Ativo")]
         [Required]
         public bool Ativo { get; set; }

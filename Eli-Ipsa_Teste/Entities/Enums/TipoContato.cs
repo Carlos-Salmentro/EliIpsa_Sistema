@@ -3,6 +3,7 @@
     public enum TipoContato : int
     {
         Celular_WhatsApp,
+        WhatsApp,
         Celular,
         Email,
         Telefone_Residencial,
